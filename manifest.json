@@ -1,0 +1,27 @@
+ {
+  "manifest_version": 2,
+  "name": "Yandex Zen simple stats",
+  "description": "Yandex Zen simple statistics extension for editors",
+  "version": "0.1",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+  "page_action":{
+    "default_icon": "icon.png",
+    "default_popup": "general_statistics.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://zen.yandex.ru/media/id/59301217e3cda86683de2230/*"
+      ],
+      "js": ["jquery-3.2.1.min.js", "content.js"],
+      "run_at":     "document_idle"
+    }
+  ]
+}
