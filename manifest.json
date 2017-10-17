@@ -12,7 +12,7 @@
     "scripts": ["background.js"]
   },
   "page_action":{
-    "default_icon": "icon.png",
+    "default_icon": "icon_c.png",
     "default_popup": "popup.html"
   },
   "content_scripts": [
