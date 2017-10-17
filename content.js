@@ -16,8 +16,9 @@ chrome.runtime.onMessage.addListener(function (msg, sender, response) {
     var likesCount = 0
     var count = 0;
     $('.publication-card-item__stat-main-text').each(function(ind, item){
-      if (($(item).text() == 'просмотров') || ($(item).text() == 'просмотр')) {
+      if (($(item).text() == 'просмотров') || ($(item).text() == 'просмотра') || ($(item).text() == 'просмотр')) {
         count = parseInt($(item).parent().find('.publication-card-item__stat-main-count').text());
+
         viewsCount = viewsCount + count;
       }
 
