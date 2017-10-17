@@ -3,23 +3,25 @@ chrome.runtime.sendMessage({
   from:    'content',
   subject: 'showPageAction'
 });
-console.log('I AM HERE');
+
+
 chrome.runtime.onMessage.addListener(function (msg, sender, response) {
   // First, validate the message's structure
   if ((msg.from === 'popup') && (msg.subject === 'CountInfo')) {
-    console.log('MESSA');
     // Collect the necessary data
     // (For your specific requirements `document.querySelectorAll(...)`
     //  should be equivalent to jquery's `$(...)`)
     var viewsCount = 0;
     var showsCount = 0;
-    $('.publication-card-item__stat-main-text').each(function(item){
-      if ($(item).text() == 'просмотров') {
+    var likesCount = 0
+    var count = 0;
+    $('.publication-card-item__stat-main-text').each(function(ind, item){
+      if (($(item).text() == 'просмотров') || ($(item).text() == 'просмотр')) {
         count = parseInt($(item).parent().find('.publication-card-item__stat-main-count').text());
         viewsCount = viewsCount + count;
       }
 
-      if ($(item).text() == 'показов') {
+      if (($(item).text() == 'показов в ленте') || ($(item).text() == 'показ в ленте')) {
         count = $(item).parent().find('.publication-card-item__stat-main-count').text();
         if (count.endsWith('тыс.')){
           count = parseInt(count.slice(0, count.length-5))*1000;
@@ -28,13 +30,17 @@ chrome.runtime.onMessage.addListener(function (msg, sender, response) {
         }
         showsCount = showsCount + count;
       }
-      console.log(viewsCount);
-      console.log(showsCount)
+    });
 
-    })
+    $('.publication-card-item__stat-likes').each(function(ind, item){
+      count = parseInt($(item).find('.publication-card-item__stat-count').text());
+      likesCount = likesCount + count;
+
+    });
     var info = {
       views: viewsCount,
-      shows: showsCount
+      shows: showsCount,
+      likes: likesCount
     }
 
     // Directly respond to the sender (popup),

@@ -2,11 +2,12 @@
 function updateCounts(info) {
   document.getElementById('v-total').textContent  = info.views;
   document.getElementById('s-total').textContent  = info.shows;
+  document.getElementById('l-total').textContent  = info.likes;
 }
 
 // Once the DOM is ready...
 window.addEventListener('DOMContentLoaded', function () {
-  console.log("STARTS")
+  // ...query for the active tab...
   // ...query for the active tab...
   chrome.tabs.query({
     active: true,

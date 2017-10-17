@@ -20,9 +20,13 @@
 
       #container {
         align-items: center;
-        display: flex;
+        /*display: flex;*/
         justify-content: space-between;
       }
+
+       .stats-row span {
+          font-weight: bold;
+       }
     </style>
 
     <!--
@@ -37,8 +41,9 @@
   <body>
     <h1>Basic stats for now</h1>
     <div id="container">
-      <div id='views'>Total views <span id='v-total'></span></div>
-      <div id='shows'>Total shows <span id='s-total'></span></div>
+      <div class='stats-row'>Total views <span id='v-total'></span></div>
+      <div class='stats-row' >Total shows <span id='s-total'></span></div>
+      <div class='stats-row' >Likes <span id='l-total'></span></div>
     </div>
   </body>
 </html>
