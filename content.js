@@ -17,8 +17,12 @@ chrome.runtime.onMessage.addListener(function (msg, sender, response) {
     var count = 0;
     $('.publication-card-item__stat-main-text').each(function(ind, item){
       if (($(item).text() == 'просмотров') || ($(item).text() == 'просмотра') || ($(item).text() == 'просмотр')) {
-        count = parseInt($(item).parent().find('.publication-card-item__stat-main-count').text());
-
+        count = $(item).parent().find('.publication-card-item__stat-main-count').text();
+        if (count.endsWith('тыс.')){
+          count = parseInt(count.slice(0, count.length-5))*1000;
+        } else {
+          count = parseInt(count);
+        }
         viewsCount = viewsCount + count;
       }
 
