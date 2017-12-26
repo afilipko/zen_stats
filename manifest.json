@@ -18,7 +18,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://zen.yandex.ru/media/id/59301217e3cda86683de2230/*"
+        "*://zen.yandex.ru/media/id/__PLACE_YOUR_ID_HERE__/*"
       ],
       "js": ["jquery-3.2.1.min.js", "content.js"],
       "run_at":     "document_idle"
